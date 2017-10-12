@@ -15,16 +15,17 @@ public class Calculator {
 	}
 
 	private static int getNum(String number){
-		return Integer.parseInt(number);
+		int num = Integer.parseInt(number);
+		if(num < 1001){
+			return num;
+		}
+		return 0;
 	}
 
 	private static int getSum(String [] numbers){
 		int sum = 0;
 		for(String number : numbers){
-			int num = getNum(number);
-			if(num < 1001){
-				sum += getNum(number);
-			}
+			sum += getNum(number);
 		}
 		return sum;
 	}

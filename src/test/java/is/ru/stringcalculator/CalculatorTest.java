@@ -53,6 +53,10 @@ public class CalculatorTest{
 		assertEquals(2, Calculator.add("1001,2"));
 	}
 
+	@Test
+	public void testBigNumber(){
+		assertEquals(0, Calculator.add("1001"));
+	}
 
 
 }
