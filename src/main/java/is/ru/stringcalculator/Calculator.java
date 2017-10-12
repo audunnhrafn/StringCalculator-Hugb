@@ -6,6 +6,11 @@ public class Calculator {
 		if(text != ""){
 			if(text.contains(",") ||text.contains("\n")){
 				String [] numbers = getNumbers(text);
+				for(String number : numbers){
+					if(getNum(number) < 0){
+						throw new IllegalArgumentException("Negatives not allowed: " + number);
+					}
+				}
 				return getSum(numbers);
 			}
 			return getNum(text);
