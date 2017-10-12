@@ -30,12 +30,21 @@ public class CalculatorTest{
 		assertEquals(6, Calculator.add("1\n2,3"));
 	}
 
-	 @Test
+	@Test
     public void testSingleNegativeNumber() {
         try {
             Calculator.add("-1,2");
         } catch (IllegalArgumentException e) {
 			assertEquals("Negatives not allowed: -1", e.getMessage());
+        }
+    }
+
+	@Test
+    public void testTwoNegativeNumbers() {
+        try {
+            Calculator.add("-1,2,-3");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives not allowed: -1,-3", e.getMessage());
         }
     }
 }

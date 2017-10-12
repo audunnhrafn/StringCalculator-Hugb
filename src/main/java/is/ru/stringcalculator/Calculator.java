@@ -6,10 +6,19 @@ public class Calculator {
 		if(text != ""){
 			if(text.contains(",") ||text.contains("\n")){
 				String [] numbers = getNumbers(text);
+				boolean negativeNumbers = false;
+				String output = "";
+				String separator = "";
+
 				for(String number : numbers){
 					if(getNum(number) < 0){
-						throw new IllegalArgumentException("Negatives not allowed: " + number);
+						negativeNumbers = true;
+						output += separator + number;
+						separator = ",";
 					}
+				}
+				if(negativeNumbers){
+					throw new IllegalArgumentException("Negatives not allowed: " + output);
 				}
 				return getSum(numbers);
 			}
