@@ -10,4 +10,14 @@ public class CalculatorTest{
 		assertEquals(0, Calculator.add(""));
 	}
 	
+	@Test
+	public void testAddOneNumber(){
+		assertEquals(1, Calculator.add("1"));
+	}
+
+	@Test
+	public void testAddTwoNumbers(){
+		assertEquals(3, Calculator.add("1,2"));
+	}
+
 }
