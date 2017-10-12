@@ -4,13 +4,13 @@ public class Calculator {
 
 	public static int add(String text){
 		if(text != ""){
-			if(text.contains(",")){
+			if(text.contains(",") ||text.contains("\n")){
+				text = text.replace("\n", ",");
 				String [] numbers = text.split(",");
 				return getSum(numbers);
 			}
-			return Integer.parseInt(text);
+			return getNum(text);
 		}
-
 		return 0;
 	}
 
@@ -25,5 +25,4 @@ public class Calculator {
 		}
 		return sum;
 	}
-
 }
