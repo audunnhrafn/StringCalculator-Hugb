@@ -6,11 +6,7 @@ public class Calculator {
 		if(text != ""){
 			if(text.contains(",")){
 				String [] numbers = text.split(",");
-				int sum = 0;
-				for(String number : numbers){
-					sum += getNum(number);
-				}
-				return sum;
+				return getSum(numbers);
 			}
 			return Integer.parseInt(text);
 		}
@@ -21,4 +17,13 @@ public class Calculator {
 	private static int getNum(String number){
 		return Integer.parseInt(number);
 	}
+
+	private static int getSum(String [] numbers){
+		int sum = 0;
+		for(String number : numbers){
+			sum += getNum(number);
+		}
+		return sum;
+	}
+
 }
