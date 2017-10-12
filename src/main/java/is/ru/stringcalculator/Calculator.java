@@ -21,7 +21,10 @@ public class Calculator {
 	private static int getSum(String [] numbers){
 		int sum = 0;
 		for(String number : numbers){
-			sum += getNum(number);
+			int num = getNum(number);
+			if(num < 1001){
+				sum += getNum(number);
+			}
 		}
 		return sum;
 	}
