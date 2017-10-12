@@ -5,8 +5,7 @@ public class Calculator {
 	public static int add(String text){
 		if(text != ""){
 			if(text.contains(",") ||text.contains("\n")){
-				text = text.replace("\n", ",");
-				String [] numbers = text.split(",");
+				String [] numbers = getNumbers(text);
 				return getSum(numbers);
 			}
 			return getNum(text);
@@ -24,5 +23,11 @@ public class Calculator {
 			sum += getNum(number);
 		}
 		return sum;
+	}
+
+	private static String [] getNumbers(String text){
+		text = text.replace("\n", ",");
+		String [] numbers = text.split(",");
+		return numbers;
 	}
 }
