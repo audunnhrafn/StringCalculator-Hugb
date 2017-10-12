@@ -6,20 +6,7 @@ public class Calculator {
 		if(text != ""){
 			if(text.contains(",") ||text.contains("\n")){
 				String [] numbers = getNumbers(text);
-				boolean negativeNumbers = false;
-				String output = "";
-				String separator = "";
-
-				for(String number : numbers){
-					if(getNum(number) < 0){
-						negativeNumbers = true;
-						output += separator + number;
-						separator = ",";
-					}
-				}
-				if(negativeNumbers){
-					throw new IllegalArgumentException("Negatives not allowed: " + output);
-				}
+				checkNegative(numbers);
 				return getSum(numbers);
 			}
 			return getNum(text);
@@ -43,5 +30,20 @@ public class Calculator {
 		text = text.replace("\n", ",");
 		String [] numbers = text.split(",");
 		return numbers;
+	}
+
+	private static void checkNegative(String [] numbers){
+		String output = "";
+		String separator = "";
+
+		for(String number : numbers){
+			if(getNum(number) < 0){
+				output += separator + number;
+				separator = ",";
+			}
+		}
+		if(output != ""){
+			throw new IllegalArgumentException("Negatives not allowed: " + output);
+		}
 	}
 }
