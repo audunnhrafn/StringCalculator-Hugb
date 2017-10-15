@@ -5,9 +5,7 @@ public class Calculator {
 	public static int add(String text){
 		if(text != ""){
 			if(text.contains("//")){
-				String delimiter = text.substring(2, text.indexOf("\n"));
-				text = text.substring(text.indexOf("\n") + 1, text.length());
-				text = text.replace(delimiter, ",");
+				text = newDelimiter(text);
 			}
 
 			if(text.contains(",") ||text.contains("\n")){
@@ -55,5 +53,12 @@ public class Calculator {
 		if(output != ""){
 			throw new IllegalArgumentException("Negatives not allowed: " + output);
 		}
+	}
+
+	private static String newDelimiter(String text){
+		String delimiter = text.substring(2, text.indexOf("\n"));
+		text = text.substring(text.indexOf("\n") + 1, text.length());
+		text = text.replace(delimiter, ",");
+		return text;
 	}
 }
