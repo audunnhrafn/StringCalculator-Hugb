@@ -4,6 +4,12 @@ public class Calculator {
 
 	public static int add(String text){
 		if(text != ""){
+			if(text.contains("//")){
+				String delimiter = text.substring(2, text.indexOf("\n"));
+				text = text.substring(text.indexOf("\n") + 1, text.length());
+				text = text.replace(delimiter, ",");
+			}
+
 			if(text.contains(",") ||text.contains("\n")){
 				String [] numbers = getNumbers(text);
 				checkNegative(numbers);
@@ -26,7 +32,7 @@ public class Calculator {
 		int sum = 0;
 		for(String number : numbers){
 			sum += getNum(number);
-		}
+		}	
 		return sum;
 	}
 
